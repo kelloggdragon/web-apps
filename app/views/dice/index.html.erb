@@ -1,0 +1,48 @@
+<%
+  # Slot machine logic
+  symbols = {
+    "diamond" => '<svg viewBox="0 0 100 100" class="slot-icon"><path d="M50 5 L95 40 L50 95 L5 40 Z" stroke-width="5" fill="none" /></svg>',
+    "trophy"  => '<svg viewBox="0 0 100 100" class="slot-icon"><path d="M20 10 H80 V30 H70 V20 H30 V30 H20 Z M30 30 H70 V50 H30 Z M50 50 V80 M35 80 H65 M40 90 H60" stroke-width="5" fill="none" /></svg>',
+    "money"   => '<svg viewBox="0 0 100 100" class="slot-icon"><circle cx="50" cy="50" r="35" stroke-width="5" fill="none" /><path d="M50 30 V70 M40 40 H60 M40 60 H60" stroke-width="5" fill="none" /></svg>',
+    "cherry"  => '<svg viewBox="0 0 100 100" class="slot-icon"><circle cx="35" cy="65" r="15" stroke-width="5" fill="none" /><circle cx="65" cy="65" r="15" stroke-width="5" fill="none" /><path d="M35 50 A20 20 0 0 1 50 30 A20 20 0 0 1 65 50" stroke-width="5" fill="none" /></svg>',
+    "seven"   => '<svg viewBox="0 0 100 100" class="slot-icon"><path d="M25 20 H75 L50 80" stroke-width="5" fill="none" /></svg>'
+  }
+  
+  reel1_key = symbols.keys.sample
+  reel2_key = symbols.keys.sample
+  reel3_key = symbols.keys.sample
+
+  reel1 = symbols[reel1_key]
+  reel2 = symbols[reel2_key]
+  reel3 = symbols[reel3_key]
+
+  is_winner = reel1_key == reel2_key && reel2_key == reel3_key
+  is_jackpot = is_winner && reel1_key == "seven"
+%>
+
+<div class="casino-luxe-container">
+  <header class="casino-header">
+    <h1>The Diamond</h1>
+    <p class="subtitle">An Elevated Gaming Experience</p>
+  </header>
+
+  <main class="game-area">
+    <div class="slot-machine">
+      <div class="reels">
+        <div class="reel reel1"><%= reel1.html_safe %></div>
+        <div class="reel reel2"><%= reel2.html_safe %></div>
+        <div class="reel reel3"><%= reel3.html_safe %></div>
+      </div>
+
+      <% if is_jackpot %>
+        <p class="result jackpot">JACKPOT!</p>
+      <% elsif is_winner %>
+        <p class="result win">WINNER!</p>
+      <% else %>
+        <p class="result">&nbsp;</p>
+      <% end %>
+
+      <a href="/dice" class="spin-button">Spin</a>
+    </div>
+  </main>
+</div>

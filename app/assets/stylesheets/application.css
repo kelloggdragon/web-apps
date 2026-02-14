@@ -1,1 +1,143 @@
-/* Application styles */
+/* Application styles for The Diamond Casino */
+
+:root {
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --primary-text-color: #e0e0e0;
+  --gold-accent: #c5b358;
+  --icon-color: #666;
+  --font-header: 'Cinzel', serif;
+  --font-body: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: var(--font-body);
+  color: var(--primary-text-color);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.casino-luxe-container {
+  width: 90%;
+  max-width: 450px;
+  padding: 2rem;
+}
+
+.casino-header h1 {
+  font-family: var(--font-header);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--gold-accent);
+  letter-spacing: 0.15em;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 0 20px rgba(197, 179, 88, 0.2);
+}
+
+.casino-header .subtitle {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #888;
+  margin-bottom: 3.5rem;
+  letter-spacing: 0.05em;
+}
+
+.slot-machine {
+  background-color: var(--surface-color);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid #2c2c2c;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.reels {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  perspective: 1000px;
+  overflow: hidden;
+  height: 100px;
+}
+
+.reel {
+  background-color: #171717;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.5);
+  animation: spin 1s ease-out forwards;
+}
+
+.reel1 { animation-delay: 0.1s; }
+.reel2 { animation-delay: 0.2s; }
+.reel3 { animation-delay: 0.3s; }
+
+@keyframes spin {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.slot-icon {
+  width: 60px;
+  height: 60px;
+  stroke: var(--icon-color);
+  transition: stroke 0.5s ease;
+}
+
+.result {
+  height: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  transition: all 0.4s ease;
+}
+
+.result.win .slot-icon,
+.result.jackpot .slot-icon {
+  stroke: var(--gold-accent);
+}
+
+.result.win {
+  color: var(--gold-accent);
+  text-shadow: 0 0 10px rgba(197, 179, 88, 0.5);
+}
+
+.result.jackpot {
+  color: var(--gold-accent);
+  text-shadow: 0 0 15px rgba(197, 179, 88, 0.8);
+  font-size: 1.4rem;
+}
+
+.spin-button {
+  display: inline-block;
+  background: linear-gradient(145deg, #333, #222);
+  color: var(--gold-accent);
+  padding: 0.9rem 2.8rem;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  border: 1px solid var(--gold-accent);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.spin-button:hover {
+  background: linear-gradient(145deg, #c5b358, #b09f4f);
+  color: #121212;
+  border-color: #121212;
+  box-shadow: 0 6px 20px rgba(197, 179, 88, 0.4);
+  transform: translateY(-2px);
+}
